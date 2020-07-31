@@ -21,7 +21,7 @@ public class MeleeAttack : MonoBehaviour
     void Start()
     {
         effect.SetActive(false);
-        //arm.SetActive(false);
+        arm.SetActive(false);
 
         trigger = shoulder.GetComponent<Collider2D>();
         player = GetComponent<Collider2D>();
@@ -38,19 +38,8 @@ public class MeleeAttack : MonoBehaviour
                 isSwinging = false;
                 arm.transform.localRotation = Quaternion.identity;
                 effect.SetActive(false);
-                //arm.SetActive(false);
+                arm.SetActive(false);
             }
-        } else {
-
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 player = transform.position;
-            player.z = 0;
-            mousePos.z = 0;
-
-            Vector2 direction = (mousePos - player).normalized;
-
-            Quaternion offset = Quaternion.FromToRotation(Vector3.right, direction);
-            shoulder.transform.localRotation = offset;
         }
     }
 
