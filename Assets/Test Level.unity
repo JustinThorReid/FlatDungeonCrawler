@@ -1756,7 +1756,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   runInBackground: 1
   startOnHeadless: 1
-  showDebugMessages: 0
+  showDebugMessages: 1
   serverTickRate: 30
   offlineScene: 
   onlineScene: 
@@ -1793,15 +1793,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
-        type: 3}
-      propertyPath: sceneId
-      value: 4073240909
-      objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449856, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
       propertyPath: m_Name
       value: Mob (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
+        type: 3}
+      propertyPath: sceneId
+      value: 4073240909
       objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449862, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
@@ -3928,15 +3928,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
-        type: 3}
-      propertyPath: sceneId
-      value: 188548995
-      objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449856, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
       propertyPath: m_Name
       value: Mob (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
+        type: 3}
+      propertyPath: sceneId
+      value: 188548995
       objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449862, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
@@ -4002,15 +4002,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
-        type: 3}
-      propertyPath: sceneId
-      value: 3591721704
-      objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449856, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
       propertyPath: m_Name
       value: Mob (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
+        type: 3}
+      propertyPath: sceneId
+      value: 3591721704
       objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449862, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
@@ -4076,15 +4076,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
-        type: 3}
-      propertyPath: sceneId
-      value: 768884007
-      objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449856, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
       propertyPath: m_Name
       value: Mob (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
+        type: 3}
+      propertyPath: sceneId
+      value: 768884007
       objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449862, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
@@ -4150,6 +4150,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7313036964982449856, guid: 7dbfc0c797a7c4e408728685eb46e1da,
+        type: 3}
+      propertyPath: m_Name
+      value: Mob
+      objectReference: {fileID: 0}
     - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
       propertyPath: sceneId
@@ -4160,10 +4165,10 @@ PrefabInstance:
       propertyPath: m_AssetId
       value: 7dbfc0c797a7c4e408728685eb46e1da
       objectReference: {fileID: 0}
-    - target: {fileID: 7313036964982449856, guid: 7dbfc0c797a7c4e408728685eb46e1da,
+    - target: {fileID: 4259602261005108574, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}
-      propertyPath: m_Name
-      value: Mob
+      propertyPath: serverOnly
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7313036964982449862, guid: 7dbfc0c797a7c4e408728685eb46e1da,
         type: 3}

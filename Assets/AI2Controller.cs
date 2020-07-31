@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class AI2Controller : MonoBehaviour {
+public class AI2Controller : NetworkBehaviour {
     public float speed = 2f;
     public float sense = 5;
 
@@ -16,6 +17,7 @@ public class AI2Controller : MonoBehaviour {
         attack = GetComponent<MeleeAttack>();
     }
 
+    [ServerCallback]
     void FixedUpdate() {
         Collider2D[] entities = Physics2D.OverlapCircleAll(transform.position, sense);
         foreach(Collider2D item in entities) {

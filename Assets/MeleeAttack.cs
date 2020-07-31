@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class MeleeAttack : MonoBehaviour
+public class MeleeAttack : NetworkBehaviour
 {
     public GameObject arm;
     public GameObject effect;
@@ -43,6 +44,12 @@ public class MeleeAttack : MonoBehaviour
         }
     }
 
+    [Command]
+    public void CmdAttack(Vector2 direction) {
+        Attack(direction);
+    }
+
+    [Server]
     public void Attack(Vector2 direction) {
         if(isSwinging || cooldown > 0)
             return;

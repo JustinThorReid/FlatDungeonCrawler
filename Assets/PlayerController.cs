@@ -7,28 +7,39 @@ public class PlayerController : NetworkBehaviour {
     Entity entity;
     MeleeAttack attack;
     Controls controls;
+    Controls Controls
+    {
+        get {
+            if(controls == null)
+                return controls = new Controls();
+            return controls;
+        }
+    }
 
     void Start() {
         attack = GetComponent<MeleeAttack>();
         entity = GetComponent<Entity>();
     }
 
+    [ClientCallback]
+    private void OnEnable() => Controls.Enable();
+    [ClientCallback]
+    private void OnDisable() => Controls.Disable();
+
     public override void OnStartAuthority() {
         this.enabled = true;
         name = "AUTHORITY";
 
-        controls = new Controls();
-        controls.Player.Attack.performed += ctx => attack.Attack(GetMouseDirection());
-        controls.Player.Enable();
+        Controls.Player.Attack.performed += ctx => attack.CmdAttack(GetMouseDirection());
     }
     
     void FixedUpdate() {
-        Vector2 targetVelocity = controls.Player.Move.ReadValue<Vector2>();
+        Vector2 targetVelocity = Controls.Player.Move.ReadValue<Vector2>();
         entity.Move(targetVelocity);
     }
 
     Vector3 GetMouseDirection() {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(controls.Player.Mouse.ReadValue<Vector2>());
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Controls.Player.Mouse.ReadValue<Vector2>());
         Vector3 player = transform.position;
         player.z = 0;
         mousePos.z = 0;
