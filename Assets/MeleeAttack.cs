@@ -54,18 +54,9 @@ public class MeleeAttack : NetworkBehaviour
         if(isSwinging || cooldown > 0)
             return;
 
-        start = Quaternion.AngleAxis(0, Vector3.back);
-        end = Quaternion.AngleAxis(swingAmount, Vector3.back);
-
-        Quaternion offset = Quaternion.FromToRotation(Vector3.right, direction);
-        shoulder.transform.localRotation = offset;
-
-        isSwinging = true;
-        swingTime = 0;
-        cooldown = 0.25f;
-        effect.SetActive(true);
-        arm.SetActive(true);
-
+        RpcAttackAnimation(direction);
+        AttackAnimation(direction);
+        
         List<Collider2D> results = new List<Collider2D>();
         Physics2D.OverlapCollider(trigger, new ContactFilter2D().NoFilter(), results);
 
@@ -79,5 +70,25 @@ public class MeleeAttack : NetworkBehaviour
                 }
             });
         }
+    }
+
+    [ClientRpc]
+    public void RpcAttackAnimation(Vector2 direction) {
+        AttackAnimation(direction);
+    }
+
+    private void AttackAnimation(Vector2 direction) {
+        start = Quaternion.AngleAxis(0, Vector3.back);
+        end = Quaternion.AngleAxis(swingAmount, Vector3.back);
+
+        Quaternion offset = Quaternion.FromToRotation(Vector3.right, direction);
+        shoulder.transform.localRotation = offset;
+
+        isSwinging = true;
+        swingTime = 0;
+        cooldown = 0.25f;
+        effect.SetActive(true);
+        arm.SetActive(true);
+
     }
 }
