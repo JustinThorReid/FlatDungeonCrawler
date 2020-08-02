@@ -55,7 +55,6 @@ public class MeleeAttack : NetworkBehaviour
             return;
 
         RpcAttackAnimation(direction);
-        AttackAnimation(direction);
         
         List<Collider2D> results = new List<Collider2D>();
         Physics2D.OverlapCollider(trigger, new ContactFilter2D().NoFilter(), results);
@@ -66,7 +65,7 @@ public class MeleeAttack : NetworkBehaviour
                 Entity e = item.GetComponent<Entity>();
                 if(e != null) {
                     e.DoDamage(10);
-                    e.KnockBack(e.transform.position - transform.position, 5);
+                    e.KnockBack(e.transform.position - transform.position, 1);
                 }
             });
         }

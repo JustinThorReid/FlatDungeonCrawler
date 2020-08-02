@@ -4,9 +4,10 @@ using UnityEngine;
 using Mirror;
 using System;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Entity : NetworkBehaviour
 {
+    private Rigidbody2D rb;
+
     public float initialHealth;
     [SyncVar(hook = nameof(HandleHealthUpdated))]
     public float currentHealth;
@@ -16,7 +17,11 @@ public class Entity : NetworkBehaviour
     public event EventHandler<float> OnHealthChanged;
 
     private void Start() {
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb = GetComponent<Rigidbody2D>();
+
+        if(rb != null) {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
     }
 
     // Start is called before the first frame update
@@ -50,11 +55,17 @@ public class Entity : NetworkBehaviour
 
     [Server]
     public void KnockBack(Vector2 direction, float strength) {
-        //GetComponent<Rigidbody2D>().AddForce(direction * strength);
-        GetComponent<Rigidbody2D>().velocity += (direction * strength);
+        if(rb != null) {
+            GetComponent<Rigidbody2D>().velocity = direction * strength;
+        }
+        //GetComponent<Rigidbody2D>().MovePosition(new Vector2(transform.position.x, transform.position.y) + (direction * strength));
     }
     
+    [Client]
     public void Move(Vector2 direction) {
+        if(rb == null)
+            return;
+
         Vector2 desiredSpeed = direction.normalized * speed;
         Vector2 change = desiredSpeed - GetComponent<Rigidbody2D>().velocity;
         if(change.magnitude > acceleration) {

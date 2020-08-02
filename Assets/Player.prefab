@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2412030932767280369}
   - component: {fileID: 2412030932767280374}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,10 +194,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4edcc799a2fa74b922d99f8799f010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   initialHealth: 100
   currentHealth: 0
-  speed: 4
-  acceleration: 0.2
+  speed: 5
+  acceleration: 2
 --- !u!58 &2412030933172757323
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -247,6 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c452be53e7f4143b547e4cff7ca2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   arm: {fileID: 2412030933781456408}
   effect: {fileID: 2412030934380936031}
   shoulder: {fileID: 2412030932767280375}
@@ -308,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2412030933540267141}
   - component: {fileID: 2412030933540267140}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pngkey.com-pixel-art-png-1147030_71
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2412030933781456411}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Swing Ancor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2412030934380936030}
   - component: {fileID: 2412030934380936025}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: swoosh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
