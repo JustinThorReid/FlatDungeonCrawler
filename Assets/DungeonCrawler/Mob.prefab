@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313036964762934483}
   - component: {fileID: 7313036964762934482}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Dungeon_Character_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7313036964982449866}
   - component: {fileID: 4259602261005108574}
   - component: {fileID: 6444023115813434079}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,9 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneId: 3799259623
+  sceneId: 0
   serverOnly: 0
-  m_AssetId: 
+  m_AssetId: 7dbfc0c797a7c4e408728685eb46e1da
   hasSpawned: 0
 --- !u!114 &6444023115813434079
 MonoBehaviour:
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313036965111744895}
   - component: {fileID: 7313036965111744888}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313036965653724880}
   - component: {fileID: 7313036965653724887}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: swoosh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7313036966128018325}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Swing Ancor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313036966423666955}
   - component: {fileID: 7313036966423666954}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pngkey.com-pixel-art-png-1147030_71
   m_TagString: Untagged
   m_Icon: {fileID: 0}

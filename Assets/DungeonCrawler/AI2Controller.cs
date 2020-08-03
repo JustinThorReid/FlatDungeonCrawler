@@ -19,7 +19,7 @@ public class AI2Controller : NetworkBehaviour {
 
     [ServerCallback]
     void FixedUpdate() {
-        Collider2D[] entities = Physics2D.OverlapCircleAll(transform.position, sense);
+        Collider2D[] entities = Physics2D.OverlapCircleAll(transform.position, sense, LayerMask.GetMask("Default", "Ignore Raycast"));
         foreach(Collider2D item in entities) {
             if(item.gameObject.GetComponent<PlayerController>()) {
                 Vector2 offset = (item.transform.position - transform.position);

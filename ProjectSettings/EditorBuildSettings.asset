@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Test Level.unity
+    path: Assets/DungeonCrawler/Test Level.unity
     guid: cecb7a3bd385a67438ff71788959eecd
   m_configObjects: {}

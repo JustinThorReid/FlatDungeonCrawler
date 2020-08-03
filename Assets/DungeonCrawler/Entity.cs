@@ -61,7 +61,6 @@ public class Entity : NetworkBehaviour
         //GetComponent<Rigidbody2D>().MovePosition(new Vector2(transform.position.x, transform.position.y) + (direction * strength));
     }
     
-    [Client]
     public void Move(Vector2 direction) {
         if(rb == null)
             return;
