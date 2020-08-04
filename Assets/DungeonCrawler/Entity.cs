@@ -3,24 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System;
+using UnityEngine.UI;
 
 public class Entity : NetworkBehaviour
 {
     private Rigidbody2D rb;
 
-    public float initialHealth;
+    public int initialHealth;
     [SyncVar(hook = nameof(HandleHealthUpdated))]
-    public float currentHealth;
+    [SerializeField]
+    private int currentHealth;
+    private float healing = 0;
+
     public float speed;
     public float acceleration;
 
-    public event EventHandler<float> OnHealthChanged;
+    public event EventHandler<int> OnHealthChanged;
+    [SerializeField]
+    private Slider healthBar;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
 
         if(rb != null) {
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+        if(healthBar != null) {
+            OnHealthChanged += (sender, health) => {
+                healthBar.value = currentHealth / (float)initialHealth;
+                healthBar.transform.localScale = currentHealth == initialHealth ? Vector3.zero : Vector3.one;
+            };
+
+            healthBar.value = currentHealth / (float)initialHealth;
+            healthBar.transform.localScale = currentHealth == initialHealth ? Vector3.zero : Vector3.one;
         }
     }
 
@@ -31,7 +47,7 @@ public class Entity : NetworkBehaviour
     }
 
     [Client]
-    private void HandleHealthUpdated(float oldValue, float newValue) {
+    private void HandleHealthUpdated(int oldValue, int newValue) {
         OnHealthChanged?.Invoke(this, currentHealth);
     }
 
@@ -40,12 +56,16 @@ public class Entity : NetworkBehaviour
     void Update()
     {
         if(currentHealth < initialHealth) {
-            currentHealth += Time.deltaTime;
+            healing += Time.deltaTime;
+            if(healing > 1) {
+                currentHealth += Mathf.FloorToInt(healing);
+                healing -= Mathf.FloorToInt(healing);
+            }
         }
     }
 
     [Server]
-    public void DoDamage(float amount) {
+    public void DoDamage(int amount) {
         currentHealth -= amount;
 
         if(currentHealth <= 0) {
