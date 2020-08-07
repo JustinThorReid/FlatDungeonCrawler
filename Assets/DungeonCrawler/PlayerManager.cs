@@ -5,7 +5,6 @@ using Mirror;
 
 public class PlayerManager : NetworkBehaviour {
     public GameObject avatarPrefab;
-    GameObject avatar;
 
     public override void OnStartServer() {
         //DungeonNetworkManager.OnServerReadied += SpawnPlayer;
@@ -13,20 +12,12 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     [Server]
-    public void SpawnPlayer(NetworkConnection conn) {
-        avatar = Instantiate(avatarPrefab);
+    public void SpawnPlayer(string playerName, NetworkConnection conn) {
+        GameObject avatar = Instantiate(avatarPrefab);
         avatar.transform.position = new Vector2(1.8f, -23);
+        avatar.GetComponent<Entity>().displayName = playerName;
         
         NetworkServer.Spawn(avatar, conn);
-    }
-
-    [Server]
-    public void SpawnAllPlayers(string scene) {
-        var test = FindObjectsOfType<NetworkPlayer>();
-
-
-        foreach(var client in FindObjectsOfType<NetworkPlayer>()) {
-            SpawnPlayer(client.connectionToClient);
-        }
+        //gameObject.GetComponent<NetworkIdentity>().AssignClientAuthority(conn);
     }
 }

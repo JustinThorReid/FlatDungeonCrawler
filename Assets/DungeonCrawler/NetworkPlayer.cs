@@ -5,6 +5,7 @@ using Mirror;
 using UnityEngine.SceneManagement;
 
 public class NetworkPlayer : NetworkBehaviour {
+    private const string charName = "CharacterName";
     private bool isReady = false;
 
     public override void OnStopClient() {
@@ -13,23 +14,29 @@ public class NetworkPlayer : NetworkBehaviour {
         isReady = false;
     }
 
-    //public override void OnStartClient() {      
-    //    CmdReady(SceneManager.GetActiveScene().name);
-    //}
+    public override void OnStartClient() {
+        if(!hasAuthority)
+            return;
+        name = name + "_authority";
 
-    public override void OnStartAuthority() {
-        CmdReady(SceneManager.GetActiveScene().name);
+        CmdReady(PlayerPrefs.GetString(charName), SceneManager.GetActiveScene().name);
     }
 
+    //public override void OnStartAuthority() {
+    //    name = name + "_authority";
+
+    //    CmdReady(PlayerPrefs.GetString(charName), SceneManager.GetActiveScene().name);
+    //}
+
     [Command]
-    void CmdReady(string sceneName) {
+    void CmdReady(string playerName, string sceneName) {
         if(SceneManager.GetActiveScene().name != sceneName)
             return;
 
         var manager = FindObjectOfType<PlayerManager>();
 
         if(manager != null) {
-            manager.SpawnPlayer(connectionToClient);
+            manager.SpawnPlayer(playerName, connectionToClient);
         }
     }
 }

@@ -525,7 +525,6 @@ MonoBehaviour:
   online: {fileID: 777631871}
   onlineMenu: {fileID: 1195912127}
   mainMenu: {fileID: 1716790735}
-  firstScene: Assets/DungeonCrawler/Test Level.unity
 --- !u!1 &247514833
 GameObject:
   m_ObjectHideFlags: 0

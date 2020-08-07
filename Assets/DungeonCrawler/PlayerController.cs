@@ -19,6 +19,10 @@ public class PlayerController : NetworkBehaviour {
     void Start() {
         attack = GetComponent<MeleeAttack>();
         entity = GetComponent<Entity>();
+
+        if(!hasAuthority) {
+            enabled = false;            
+        }
     }
 
     [ClientCallback]
@@ -32,8 +36,7 @@ public class PlayerController : NetworkBehaviour {
     private void OnDisable() => Controls.Disable();
 
     public override void OnStartAuthority() {
-        this.enabled = true;
-        name = "AUTHORITY";
+        name = name + "_authority";
 
         Controls.Player.Attack.performed += ctx => attack.CmdAttack(GetMouseDirection());
         Controls.Player.Interact.performed += ctx => StartInteraction();

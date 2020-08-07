@@ -17,14 +17,18 @@ public class DungeonNetworkManager : NetworkManager {
     public override void OnStartServer() {
         base.OnStartServer();
 
-        spawnPrefabs = new List<GameObject>(Resources.LoadAll<GameObject>("SpawnablePrefabs"));
+        foreach(var prefab in Resources.LoadAll<GameObject>("SpawnablePrefabs")) {
+            if(prefab.GetComponent<NetworkIdentity>() != null)
+                spawnPrefabs.Add(prefab);
+        }
     }
 
     public override void OnStartClient() {
         base.OnStartClient();
 
         foreach(var prefab in Resources.LoadAll<GameObject>("SpawnablePrefabs")) {
-            ClientScene.RegisterPrefab(prefab);
+            if(prefab.GetComponent<NetworkIdentity>() != null)
+                ClientScene.RegisterPrefab(prefab);
         }
     }
 

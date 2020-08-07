@@ -4,6 +4,7 @@ using UnityEngine;
 using Mirror;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 public class Entity : NetworkBehaviour
 {
@@ -14,13 +15,19 @@ public class Entity : NetworkBehaviour
     [SerializeField]
     private int currentHealth;
     private float healing = 0;
-
-    public float speed;
-    public float acceleration;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float acceleration;
 
     public event EventHandler<int> OnHealthChanged;
     [SerializeField]
     private Slider healthBar;
+    [SerializeField]
+    private TMP_Text nameDisplay;
+    [SyncVar(hook = nameof(HandleNameChange))]
+    [SerializeField]
+    public string displayName;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +44,12 @@ public class Entity : NetworkBehaviour
 
             healthBar.value = currentHealth / (float)initialHealth;
             healthBar.transform.localScale = currentHealth == initialHealth ? Vector3.zero : Vector3.one;
+        }
+    }
+
+    public void HandleNameChange(string oldName, string newName) {
+        if(nameDisplay != null) {
+            nameDisplay.text = newName;
         }
     }
 
