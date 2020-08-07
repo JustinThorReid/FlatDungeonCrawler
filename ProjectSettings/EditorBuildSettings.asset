@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/DungeonCrawler/MainMenu/MainMenu.unity
+    guid: 10a221f747a080d46bd0eccfd96b1826
+  - enabled: 1
     path: Assets/DungeonCrawler/Test Level.unity
     guid: cecb7a3bd385a67438ff71788959eecd
   m_configObjects:
