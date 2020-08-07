@@ -4,7 +4,8 @@ using UnityEngine;
 using Mirror;
 
 public class AI2Controller : NetworkBehaviour {
-    public float speed = 2f;
+    public GameObject shoulder;
+
     public float sense = 5;
 
     Entity entity;
@@ -26,7 +27,11 @@ public class AI2Controller : NetworkBehaviour {
                 entity.Move(offset.normalized);
 
                 if(offset.magnitude <= 1) {
-                    attack.Attack(offset.normalized);
+                    Vector3 rotation = Quaternion.FromToRotation(Vector3.right, offset).eulerAngles;
+                    rotation.z = Mathf.RoundToInt(rotation.z / 22.5f) * 22.5f;
+                    shoulder.transform.localRotation = Quaternion.Euler(rotation);
+
+                    attack.Attack();
                 }
             }
         }

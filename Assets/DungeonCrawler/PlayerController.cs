@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : NetworkBehaviour {
+    public GameObject shoulder;
+
     Entity entity;
     MeleeAttack attack;
     Controls controls;
@@ -28,6 +31,10 @@ public class PlayerController : NetworkBehaviour {
     [ClientCallback]
     private void Update() {
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
+
+        Vector3 rotation = Quaternion.FromToRotation(Vector3.right, GetMouseDirection()).eulerAngles;
+        rotation.z = Mathf.RoundToInt(rotation.z / 22.5f) * 22.5f;
+        shoulder.transform.localRotation = Quaternion.Euler(rotation);
     }
 
     [ClientCallback]
@@ -38,8 +45,21 @@ public class PlayerController : NetworkBehaviour {
     public override void OnStartAuthority() {
         name = name + "_authority";
 
-        Controls.Player.Attack.performed += ctx => attack.CmdAttack(GetMouseDirection());
+        Controls.Player.Block.started += BlockingStarted;
+        Controls.Player.Block.canceled += BlockingStopped;
+        //Controls.Player.Block.performed += BlockingStopped;
+        Controls.Player.Attack.performed += ctx => attack.CmdAttack();
         Controls.Player.Interact.performed += ctx => StartInteraction();
+    }
+
+    [Client]
+    private void BlockingStarted(CallbackContext ctx) {
+        attack.Block(true);
+    }
+
+    [Client]
+    private void BlockingStopped(CallbackContext ctx) {
+        attack.Block(false);
     }
 
     [Client]
