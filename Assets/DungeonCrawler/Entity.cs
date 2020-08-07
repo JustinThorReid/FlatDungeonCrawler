@@ -82,6 +82,10 @@ public class Entity : NetworkBehaviour
         currentHealth -= amount;
 
         if(currentHealth <= 0) {
+            if(GetComponent<PlayerController>() != null) {
+                FindObjectOfType<PlayerManager>().PlayerDeath(gameObject);
+            }
+
             Destroy(gameObject);
         }
     }

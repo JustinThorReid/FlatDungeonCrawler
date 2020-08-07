@@ -22,12 +22,6 @@ public class NetworkPlayer : NetworkBehaviour {
         CmdReady(PlayerPrefs.GetString(charName), SceneManager.GetActiveScene().name);
     }
 
-    //public override void OnStartAuthority() {
-    //    name = name + "_authority";
-
-    //    CmdReady(PlayerPrefs.GetString(charName), SceneManager.GetActiveScene().name);
-    //}
-
     [Command]
     void CmdReady(string playerName, string sceneName) {
         if(SceneManager.GetActiveScene().name != sceneName)
