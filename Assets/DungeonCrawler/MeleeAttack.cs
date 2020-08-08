@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+[RequireComponent(typeof(Entity))]
 public class MeleeAttack : NetworkBehaviour
 {
     public GameObject arm;
@@ -11,6 +12,8 @@ public class MeleeAttack : NetworkBehaviour
     public Collider2D attackArea;
     Collider2D player;
     float swingAmount = 120;
+
+    private Entity entity;
 
     Quaternion start;
     Quaternion end;
@@ -29,6 +32,7 @@ public class MeleeAttack : NetworkBehaviour
     {
         effect.SetActive(false);
         arm.SetActive(false);
+        entity = GetComponent<Entity>();
 
         player = GetComponent<Collider2D>();
     }
@@ -72,6 +76,8 @@ public class MeleeAttack : NetworkBehaviour
     [Server]
     public void Attack() {
         if(isSwinging || cooldown > 0)
+            return;
+        if(entity.isStunned)
             return;
 
         if(!isBlocking) {

@@ -9,6 +9,8 @@ using TMPro;
 public class Entity : NetworkBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField]
+    private GameObject effectSprite;
 
     public int initialHealth;
     [SyncVar(hook = nameof(HandleHealthUpdated))]
@@ -28,6 +30,10 @@ public class Entity : NetworkBehaviour
     [SyncVar(hook = nameof(HandleNameChange))]
     [SerializeField]
     public string displayName;
+
+    [SyncVar(hook = nameof(HandleStunUpdated))]
+    public bool isStunned = false;
+    private float remainingStunTime = 0;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -75,6 +81,13 @@ public class Entity : NetworkBehaviour
                 healing -= Mathf.FloorToInt(healing);
             }
         }
+
+        if(remainingStunTime > 0) {
+            remainingStunTime -= Time.deltaTime;
+
+            if(remainingStunTime <= 0)
+                isStunned = false;
+        }
     }
 
     [Server]
@@ -95,11 +108,21 @@ public class Entity : NetworkBehaviour
         if(rb != null) {
             GetComponent<Rigidbody2D>().velocity = direction * strength;
         }
+
+        Stun(2);
         //GetComponent<Rigidbody2D>().MovePosition(new Vector2(transform.position.x, transform.position.y) + (direction * strength));
+    }
+
+    [Server]
+    private void Stun(float durationSeconds) {
+        isStunned = true;
+        remainingStunTime = durationSeconds;
     }
     
     public void Move(Vector2 direction) {
         if(rb == null)
+            return;
+        if(isStunned)
             return;
 
         Vector2 desiredSpeed = direction.normalized * speed;
@@ -109,5 +132,9 @@ public class Entity : NetworkBehaviour
         }
 
         GetComponent<Rigidbody2D>().velocity += change;
+    }
+
+    private void HandleStunUpdated(bool oldValue, bool newValue) {
+        effectSprite.SetActive(newValue);
     }
 }
