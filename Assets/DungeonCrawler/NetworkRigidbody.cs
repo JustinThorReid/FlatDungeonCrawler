@@ -17,7 +17,7 @@ public class NetworkRigidbody : NetworkBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if(isClient && !hasAuthority) {
+        if(!isServer && !hasAuthority) {
             rb.isKinematic = true;
         }
     }

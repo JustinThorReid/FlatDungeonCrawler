@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3637943946788219507
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1599675959996708698, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorHorz
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708700, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599675959996708702, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8828279233732949379, guid: 7bb2d324898e86749a3889e52fdc4178,
+        type: 3}
+    - target: {fileID: 2717367462646983179, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717367462646983179, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719298304256129783, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 31924764a5e3aa84187f1dfe04785e5f, type: 2}
+    - target: {fileID: 6753161803448639343, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554743640161599995, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: sceneId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554743640161599995, guid: cdbce32f2ccae164f9c8f702624a4cb4,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cdbce32f2ccae164f9c8f702624a4cb4, type: 3}

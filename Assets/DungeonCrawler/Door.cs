@@ -6,23 +6,22 @@ using Mirror;
 
 public class Door : NetworkBehaviour, IInteractable
 {
-    [SyncVar]
+    private Animator animator;
+    private void Start() {
+        animator = GetComponent<Animator>();
+    }
+
+    [SyncVar(hook = nameof(HandleDoorOpen))]
     bool isOpen = false;
 
     [Server]
     public void ServerInteract(GameObject source) {
-        RpcInteract(gameObject);
+        isOpen = !isOpen;
+        HandleDoorOpen(!isOpen, isOpen);
     }
     
-    private void Interact(GameObject source) {
-        isOpen = !isOpen;
+    private void HandleDoorOpen(bool oldVal, bool newVal) {
+        animator.SetInteger("DoorOpen", newVal ? 1 : 0);
         GetComponent<Collider2D>().isTrigger = isOpen;
-        GetComponent<SpriteRenderer>().enabled = !isOpen;
     }
-
-    [ClientRpc]
-    private void RpcInteract(GameObject source) {
-        Interact(gameObject);
-    }
-
 }
