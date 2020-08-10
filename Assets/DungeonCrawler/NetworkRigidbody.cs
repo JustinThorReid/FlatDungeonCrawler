@@ -7,8 +7,8 @@ using Mirror;
 public class NetworkRigidbody : NetworkBehaviour
 {
     private Rigidbody2D rb;
-    //[SyncVar(hook = nameof(HandleVelocity))]
-    //private Vector2 velocity;
+    [SyncVar(hook = nameof(HandleVelocity))]
+    private Vector2 velocity;
     //[SyncVar(hook = nameof(HandlePosition))]
     //private Vector2 position;
 
@@ -21,21 +21,22 @@ public class NetworkRigidbody : NetworkBehaviour
             rb.isKinematic = true;
         }
     }
-    
-    //[Client]
-    //private void HandleVelocity(Vector2 old, Vector2 newVal) {
-    //    rb.velocity = newVal;
-    //}
 
-    //[Client]
-    //private void HandlePosition(Vector2 old, Vector2 newVal) {
-    //    rb.position = newVal;
-    //}
+    private void HandleVelocity(Vector2 oldVal, Vector2 newVal) {
+        if(rb.isKinematic)
+            rb.velocity = newVal;
+    }
 
-    //// Update is called once per frame
-    //[ServerCallback]
-    //void FixedUpdate() {
-    //    velocity = rb.velocity;
-    //    position = rb.position;
-    //}
+    [Command]
+    private void CmdSetVelocity(Vector2 velocity) {
+        this.velocity = velocity;
+        rb.velocity = velocity;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate() {
+        if(!rb.isKinematic && hasAuthority) {
+            CmdSetVelocity(rb.velocity);
+        }
+    }
 }

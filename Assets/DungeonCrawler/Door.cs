@@ -8,7 +8,7 @@ public class Door : NetworkBehaviour, IInteractable
 {
     private Animator animator;
     private void Start() {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     [SyncVar(hook = nameof(HandleDoorOpen))]

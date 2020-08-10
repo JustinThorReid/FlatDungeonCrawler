@@ -92,8 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2412030932767280369}
   - component: {fileID: 2412030932767280374}
-  - component: {fileID: 6514840789840030317}
-  - component: {fileID: 3778239252103267234}
   m_Layer: 2
   m_Name: RightShoulder
   m_TagString: Untagged
@@ -148,41 +146,6 @@ PolygonCollider2D:
       - {x: 0.09220493, y: -0.8869009}
       - {x: 0.9986128, y: -0.41251755}
       - {x: 1.0148051, y: 0.33025837}
---- !u!114 &6514840789840030317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2412030932767280375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0
---- !u!114 &3778239252103267234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2412030932767280375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 0
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
-  target: {fileID: 0}
 --- !u!1 &2412030932953241954
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +246,7 @@ GameObject:
   - component: {fileID: 2119407502459631441}
   - component: {fileID: -8805592315155479277}
   - component: {fileID: 8033171863506379381}
+  - component: {fileID: 3324640110941788785}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -328,7 +292,6 @@ MonoBehaviour:
   currentHealth: 100
   speed: 5
   acceleration: 2
-  healthBar: {fileID: 8487623089741869337}
   nameDisplay: {fileID: 7304864996125243553}
   displayName: 
   isStunned: 0
@@ -452,6 +415,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+--- !u!114 &3324640110941788785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412030933172757326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  target: {fileID: 2412030932767280369}
 --- !u!1 &2412030933540267146
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,18 +958,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c13d0acb8fc8bc4ab18b0acab799e12, type: 3}
---- !u!114 &8487623089741869337 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8719821990054184386, guid: 6c13d0acb8fc8bc4ab18b0acab799e12,
-    type: 3}
-  m_PrefabInstance: {fileID: 921302634678613211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6913467586427642763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1234,16 +1204,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1155603281141822634, guid: 831c02df5e58848478e80d9fece39992,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1155603281141822634, guid: 831c02df5e58848478e80d9fece39992,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6670917325528277320, guid: 831c02df5e58848478e80d9fece39992,
         type: 3}

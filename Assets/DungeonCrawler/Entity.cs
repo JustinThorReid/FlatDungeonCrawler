@@ -23,7 +23,6 @@ public class Entity : NetworkBehaviour
     private float acceleration;
 
     public event EventHandler<int> OnHealthChanged;
-    [SerializeField]
     private Slider healthBar;
     [SerializeField]
     private TMP_Text nameDisplay;
@@ -35,6 +34,15 @@ public class Entity : NetworkBehaviour
     public bool isStunned = false;
     private float remainingStunTime = 0;
 
+    private T GetChildComponentByName<T>(string name) where T : Component {
+        foreach(T component in GetComponentsInChildren<T>(true)) {
+            if(component.gameObject.name == name) {
+                return component;
+            }
+        }
+        return null;
+    }
+
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
 
@@ -42,6 +50,7 @@ public class Entity : NetworkBehaviour
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
+        Slider healthBar = GetChildComponentByName<Slider>("HealthBar");
         if(healthBar != null) {
             OnHealthChanged += (sender, health) => {
                 healthBar.value = currentHealth / (float)initialHealth;

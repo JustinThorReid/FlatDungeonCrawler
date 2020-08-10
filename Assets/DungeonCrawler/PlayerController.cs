@@ -54,12 +54,12 @@ public class PlayerController : NetworkBehaviour {
 
     [Client]
     private void BlockingStarted(CallbackContext ctx) {
-        attack.Block(true);
+        attack.CmdBlock(true);
     }
 
     [Client]
     private void BlockingStopped(CallbackContext ctx) {
-        attack.Block(false);
+        attack.CmdBlock(false);
     }
 
     [Client]
